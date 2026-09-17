@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Tubitak Telefon OS - Android-x86 Repo Manifest
+  
+  Bu manifest, Android-x86 projesinin kaynak kodunu senkronize etmek için
+  kullanılır. AOSP tabanlıdır ve x86 / x86_64 PC donanımını hedefler.
+  
+  Kullanım:
+    repo init -u https://github.com/kullaniciadi/tubitak-phone-os -b main -m manifest/default.xml
+    repo sync -c --no-tags -j$(nproc --all)
+-->
+<manifest>
+  <remote name="aosp" fetch="https://android.googlesource.com/" />
+  <remote name="x86" fetch="https://github.com/android-x86/" />
+  <remote name="github" fetch="https://github.com/" />
+
+  <default remote="x86" revision="android-x86-9.0-r2" sync-j="4" />
+
+  <!-- Android-x86 ana manifesti -->
+  <project path="manifest" name="manifest" remote="x86" revision="android-x86-9.0-r2" />
+
+  <!-- Tubitak projesine özel katman (ileride eklenecek) -->
+  <!-- <project path="device/tubitak/phone" name="tubitak-phone-device" remote="github" /> -->
+
+</manifest>
