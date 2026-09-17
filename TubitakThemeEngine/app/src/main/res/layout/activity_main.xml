@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/purple_500"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvCurrentEmotion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Duygu: -"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <androidx.camera.view.PreviewView
+            android:id="@+id/previewView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_marginBottom="16dp"
+            android:background="@android:color/darker_gray"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tema Modu Seçin"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerThemeMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Duygu Durumu (Manuel seçim)"
+            android:textSize="16sp"
+            android:layout_marginBottom="8dp" />
+
+        <Spinner
+            android:id="@+id/spinnerEmotion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnToggleFaceDetection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Yüzden Duygu Tespiti: KAPALI"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnEmotionSettings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Duygu Tespiti Ayarları"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kişisel Fotoğraf Seç"
+            android:layout_marginBottom="8dp" />
+
+        <TextView
+            android:id="@+id/tvSelectedImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Henüz fotoğraf seçilmedi"
+            android:layout_marginBottom="16dp" />
+
+        <Button
+            android:id="@+id/btnRefreshLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Konumu Yenile"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnApplyWallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Temayı Uygula"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnSetLiveWallpaper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Canlı Duvar Kağıdı Olarak Ayarla"
+            android:layout_marginBottom="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/disclaimer"
+            android:textSize="12sp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_marginTop="16dp" />
+
+    </LinearLayout>
+</ScrollView>
