@@ -1,0 +1,33 @@
+# Android-x86 kaynak kodu (repo sync ile indirilir)
+android-x86/
+
+# Derleme çıktıları
+out/
+*.iso
+*.ova
+*.img
+*.vdi
+*.vmdk
+*.qcow2
+
+# AOSP / Android-x86 derleme artıkları
+out/
+prebuilts/
+*.log
+
+# ccache
+.ccache/
+
+# IDE ve sistem dosyaları
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Geçici dosyalar
+tmp/
+temp/
+*.tmp
