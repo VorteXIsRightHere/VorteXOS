@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Tubitak Theme Engine</string>
+    <string name="image_selected">Fotoğraf seçildi</string>
+    <string name="disclaimer">
+        Hava durumu teması için OpenWeatherMap API anahtarı gerekir.
+        Konum teması ücretsiz OpenStreetMap kullanır, ek API anahtarı istemez.
+        Kişisel tema için galeriden fotoğraf seçebilirsiniz.
+        Duygu teması kamerayı kullanır; ayarlardan açılıp kapatılabilir.
+    </string>
+
+    <!-- API Anahtarları: Kendi anahtarlarınızla değiştirin -->
+    <string name="openweather_api_key">d0a8edd95bcc1e9387b2913a03c81c51</string>
+    <string name="google_maps_api_key">YOUR_GOOGLE_MAPS_API_KEY</string>
+</resources>
