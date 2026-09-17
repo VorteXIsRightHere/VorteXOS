@@ -1,0 +1,97 @@
+name: Modify Bliss OS ISO with Tubitak Theme Engine
+
+on:
+  workflow_dispatch:
+    inputs:
+      bliss_iso_url:
+        description: 'Bliss OS ISO direct download URL'
+        required: true
+        default: 'https://sourceforge.net/projects/blissos-x86/files/Official/BlissOS15/Gapps/Generic/Bliss-v15.9.2-x86_64-OFFICIAL-gapps-20241012.iso/download'
+      apk_artifact_name:
+        description: 'APK artifact name from build-theme-apk workflow'
+        required: true
+        default: 'tubitak-theme-engine-apk'
+
+jobs:
+  modify-iso:
+    name: Modify Bliss OS ISO
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Free disk space
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/pipx
+          sudo apt-get clean
+          df -h
+
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            p7zip-full p7zip-rar squashfs-tools xorriso \
+            wget file fdisk
+
+      - name: Download Bliss OS ISO
+        run: |
+          mkdir -p work
+          wget -O work/bliss-os.iso "${{ github.event.inputs.bliss_iso_url }}"
+          ls -lh work/bliss-os.iso
+
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ github.event.inputs.apk_artifact_name }}
+          path: work/apk
+
+      - name: Extract ISO contents
+        run: |
+          mkdir -p work/iso_extracted
+          7z x work/bliss-os.iso -owork/iso_extracted
+          find work/iso_extracted -name "*.img" -o -name "*.sfs" | head -20
+
+      - name: Modify system image (template)
+        run: |
+          echo "=============================================="
+          echo "Bliss OS ISO modifikasyon adımları"
+          echo "=============================================="
+          echo "Bu adımda system.img veya system.sfs dosyası:"
+          echo "  1. Mount edilir veya unsquashfs ile çıkarılır"
+          echo "  2. TubitakThemeEngine APK'sı system/app altına kopyalanır"
+          echo "  3. Gerekli izinler ve SELinux context ayarlanır"
+          echo "  4. system image yeniden paketlenir"
+          echo ""
+          echo "NOT: Bliss OS sürümüne göre dosya isimleri ve yollar değişebilir."
+          echo "Bu workflow şablon olarak bırakılmıştır."
+          echo "=============================================="
+          ls -R work/apk
+
+      # Örnek adımlar (Bliss OS yapısına göre güncellenecek):
+      # - name: Mount system image
+      #   run: |
+      #     mkdir -p work/system_mount
+      #     mount -o loop work/iso_extracted/system.img work/system_mount
+      #
+      # - name: Install APK into system image
+      #   run: |
+      #     mkdir -p work/system_mount/system/app/TubitakThemeEngine
+      #     cp work/apk/*.apk work/system_mount/system/app/TubitakThemeEngine/
+      #
+      # - name: Repack system image
+      #   run: |
+      #     umount work/system_mount
+      #     # veya make_ext4fs ile yeniden oluştur
+      #
+      # - name: Rebuild ISO
+      #   run: |
+      #     xorriso -as mkisofs ... -o work/tubitak-phone-os.iso work/iso_extracted/
+
+      - name: Upload modified ISO (placeholder)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: modified-iso-workdir
+          path: work/
+          if-no-files-found: warn
