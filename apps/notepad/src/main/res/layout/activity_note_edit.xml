@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?android:attr/windowBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="end"
+        android:paddingBottom="8dp">
+        
+        <Button
+            android:id="@+id/btnShare"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/share"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_marginEnd="8dp" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/etTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/title"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:background="@null"
+        android:paddingBottom="8dp" />
+
+    <EditText
+        android:id="@+id/etCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/category"
+        android:textSize="14sp"
+        android:background="@null"
+        android:paddingBottom="16dp" />
+
+    <EditText
+        android:id="@+id/etContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="top|start"
+        android:hint="@string/content"
+        android:background="@null" />
+
+    <TextView
+        android:id="@+id/tvCharCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="end"
+        android:text="0 chars"
+        android:textSize="12sp"
+        android:paddingTop="8dp" />
+
+</LinearLayout>

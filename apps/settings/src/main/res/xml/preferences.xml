@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="Display &amp; Appearance">
+        <SwitchPreferenceCompat
+            android:key="dark_mode"
+            android:title="Dark Mode"
+            android:defaultValue="true" />
+        <ListPreference
+            android:key="accent_color"
+            android:title="Accent Color Picker"
+            android:entries="@array/color_entries"
+            android:entryValues="@array/color_values"
+            android:defaultValue="#7C4DFF"/>
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="VorteX Emotion Engine">
+        <SwitchPreferenceCompat
+            android:key="emotion_engine_enabled"
+            android:title="Enable Emotion Engine"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="VorteX WeatherSync">
+        <SwitchPreferenceCompat
+            android:key="weather_sync_enabled"
+            android:title="Enable WeatherSync"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="VorteX AI Assistant">
+        <EditTextPreference
+            android:key="gemini_api_key"
+            android:title="Gemini API Key" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Security &amp; Privacy">
+        <Preference
+            android:key="app_lock_shortcut"
+            android:title="App Lock Shortcut" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="About VorteXOS">
+        <Preference
+            android:key="about_vortexos"
+            android:title="About"
+            android:summary="Version 1.0.0" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

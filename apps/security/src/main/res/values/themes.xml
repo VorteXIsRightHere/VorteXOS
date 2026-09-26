@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.VorteXSecurity" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/vortex_accent</item>
+        <item name="colorSecondary">@color/vortex_accent</item>
+        <item name="android:windowBackground">@color/vortex_black</item>
+        <item name="android:textColorPrimary">@color/vortex_text_primary</item>
+        <item name="android:textColorSecondary">@color/vortex_text_secondary</item>
+    </style>
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- VorteXOS Renk Paleti -->
+    <!-- Ana Renkler -->
+    <color name="vortex_primary">#7C4DFF</color>
+    <color name="vortex_primary_dark">#5C35CC</color>
+    <color name="vortex_primary_light">#B388FF</color>
+    <color name="vortex_secondary">#00E5FF</color>
+    <color name="vortex_secondary_dark">#00B8D4</color>
+
+    <!-- Arka Plan Renkleri (Karanlık Tema) -->
+    <color name="vortex_background">#121212</color>
+    <color name="vortex_surface">#1E1E1E</color>
+    <color name="vortex_surface_variant">#2D2D2D</color>
+    <color name="vortex_card_background">#252525</color>
+
+    <!-- Metin Renkleri -->
+    <color name="vortex_text_primary">#FFFFFF</color>
+    <color name="vortex_text_secondary">#B3FFFFFF</color>
+    <color name="vortex_text_disabled">#61FFFFFF</color>
+
+    <!-- Durum Renkleri -->
+    <color name="vortex_success">#66BB6A</color>
+    <color name="vortex_warning">#FFA726</color>
+    <color name="vortex_error">#EF5350</color>
+    <color name="vortex_info">#42A5F5</color>
+
+    <!-- Duygu Renkleri -->
+    <color name="emotion_happy">#FFB300</color>
+    <color name="emotion_sad">#5C6BC0</color>
+    <color name="emotion_angry">#00897B</color>
+    <color name="emotion_surprised">#AB47BC</color>
+    <color name="emotion_neutral">#7C4DFF</color>
+    <color name="emotion_tired">#546E7A</color>
+    <color name="emotion_relaxed">#66BB6A</color>
+
+    <!-- Hava Durumu Renkleri -->
+    <color name="weather_sunny">#FFB300</color>
+    <color name="weather_rainy">#42A5F5</color>
+    <color name="weather_snowy">#B3E5FC</color>
+    <color name="weather_stormy">#4A148C</color>
+    <color name="weather_cloudy">#78909C</color>
+    <color name="weather_foggy">#CFD8DC</color>
+    <color name="weather_sunset">#FF7043</color>
+    <color name="weather_night">#1A237E</color>
+</resources>

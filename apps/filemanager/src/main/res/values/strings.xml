@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">File Manager</string>
+    <string name="new_folder">New Folder</string>
+    <string name="rename">Rename</string>
+    <string name="delete">Delete</string>
+    <string name="copy">Copy</string>
+</resources>

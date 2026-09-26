@@ -1,0 +1,27 @@
+# VorteXOS Custom Build.prop
+
+# Branding
+ro.product.brand=VorteXOS
+ro.product.name=vortex_os
+ro.product.device=vortex_x86
+ro.build.display.id=VorteXOS-1.0-Teknofest
+ro.build.version.release=11
+ro.build.id=RQ3A.211001.001
+
+# Enable Freeform Window Mode (for Desktop-like experience)
+persist.sys.freeform_window=true
+
+# Performance tweaks
+ro.config.low_ram=false
+dalvik.vm.heapsize=512m
+dalvik.vm.heapgrowthlimit=256m
+
+# Audio/Video
+ro.audio.ignore_effects=true
+
+# Default language
+ro.product.locale=tr-TR
+
+# Misc
+ro.setupwizard.mode=OPTIONAL
+ro.control_privapp_permissions=log

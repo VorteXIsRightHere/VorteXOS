@@ -1,0 +1,8 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Theme.VorteXOS.FileManager" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/vortex_accent</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSurface">@color/vortex_surface</item>
+        <item name="android:windowBackground">@color/vortex_bg</item>
+    </style>
+</resources>

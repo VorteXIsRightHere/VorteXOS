@@ -1,0 +1,59 @@
+# VorteXOS .gitignore
+
+# Gradle
+.gradle/
+build/
+**/build/
+local.properties
+*.iml
+.idea/
+*.hprof
+
+# Android generated
+gen/
+bin/
+out/
+**/gen/
+
+# OS artifacts
+*.iso
+*.vdi
+*.vmdk
+*.ova
+*.sha256
+*.zip
+
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Secrets / API keys (never commit these!)
+secrets.properties
+local.defaults.properties
+keystore.jks
+*.keystore
+*.jks
+
+# Boot animation frames (generated — run generate_frames.py)
+branding/bootanimation/part0/
+branding/bootanimation/part1/
+
+# macOS
+.DS_Store
+.AppleDouble
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IntelliJ / Android Studio
+*.iws
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/

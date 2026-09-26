@@ -1,0 +1,209 @@
+name: Build & Release VorteXOS
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      release_type:
+        description: 'Release Type (stable/beta/alpha)'
+        required: true
+        default: 'alpha'
+        type: choice
+        options:
+          - stable
+          - beta
+          - alpha
+      base_iso_url:
+        description: 'Android-x86 Base ISO URL'
+        required: true
+        default: 'https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download'
+
+jobs:
+  # ─────────────────────────────────────────────
+  # Job 1: Tüm Android uygulamalarını derle
+  # ─────────────────────────────────────────────
+  build-apps:
+    name: 🔨 Build Android Apps
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kaynak kodu
+        uses: actions/checkout@v4
+
+      - name: JDK 17 kur
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Android SDK kur
+        uses: android-actions/setup-android@v3
+
+      - name: Gradle çalıştırma izni ver
+        run: chmod +x ./gradlew
+
+      - name: API anahtarlarını local.properties'e yaz
+        run: |
+          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> local.properties
+          echo "OPENWEATHER_API_KEY=${{ secrets.OPENWEATHER_API_KEY }}" >> local.properties
+
+      - name: Gradle önbelleğini yapılandır
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle.kts') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Tüm modülleri release olarak derle
+        run: |
+          ./gradlew assembleRelease --stacktrace 2>&1 | tail -50
+          echo "Derleme tamamlandı, APK'lar toplanıyor..."
+          mkdir -p build/outputs/apk/release
+          find . -name "*-release*.apk" -exec cp {} build/outputs/apk/release/ \;
+          echo "Toplanan APK'lar:"
+          ls -lah build/outputs/apk/release/ || echo "APK bulunamadı"
+
+      - name: APK artifact'larını yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: compiled-apks
+          path: build/outputs/apk/release/
+          if-no-files-found: warn
+          retention-days: 1
+
+  # ─────────────────────────────────────────────
+  # Job 2: Android-x86 ISO'sunu yeniden oluştur
+  # ─────────────────────────────────────────────
+  remaster-iso:
+    name: 📀 Remaster ISO
+    needs: build-apps
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout kaynak kodu
+        uses: actions/checkout@v4
+
+      - name: Disk alanı temizle (GitHub runner için)
+        run: |
+          sudo rm -rf /usr/local/lib/android /usr/share/dotnet /opt/ghc
+          df -h
+
+      - name: Remastering araçlarını kur
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y \
+            squashfs-tools xorriso isolinux syslinux-utils \
+            e2fsprogs android-sdk-libsparse-utils \
+            python3 python3-pip
+          pip3 install Pillow -q
+
+      - name: Boot animasyon karelerini oluştur
+        run: |
+          python3 branding/bootanimation/generate_frames.py
+          echo "Boot animasyon kareleri:"
+          ls branding/bootanimation/part0/ | wc -l
+          ls branding/bootanimation/part1/ | wc -l
+
+      - name: Boot animasyonunu paketle
+        run: |
+          cd branding/bootanimation
+          zip -r0 ../../bootanimation.zip desc.txt part0 part1
+          cd ../..
+          echo "bootanimation.zip boyutu: $(du -h bootanimation.zip | cut -f1)"
+
+      - name: Base ISO indir
+        run: |
+          BASE_URL="${{ github.event.inputs.base_iso_url || 'https://sourceforge.net/projects/android-x86/files/Release%209.0/android-x86_64-9.0-r2.iso/download' }}"
+          echo "İndiriliyor: $BASE_URL"
+          wget -q --show-progress -O base.iso "$BASE_URL" || \
+          wget -q --show-progress -O base.iso \
+            "https://osdn.net/dl/android-x86/android-x86_64-9.0-r2.iso"
+          echo "ISO boyutu: $(du -h base.iso | cut -f1)"
+
+      - name: Derlenmiş APK'ları indir
+        uses: actions/download-artifact@v4
+        with:
+          name: compiled-apks
+          path: ./apks
+
+      - name: ISO remastering işlemi
+        run: |
+          chmod +x ./scripts/remaster-iso.sh
+          chmod +x ./scripts/inject-apps.sh
+          sudo ./scripts/remaster-iso.sh base.iso ./apks VorteXOS-${{ github.ref_name || 'dev' }}.iso
+          echo "VorteXOS ISO hazır!"
+
+      - name: SHA256 checksum oluştur
+        run: |
+          sha256sum VorteXOS-*.iso > VorteXOS-${{ github.ref_name || 'dev' }}.iso.sha256
+          cat VorteXOS-*.iso.sha256
+
+      - name: ISO artifact'ı yükle
+        uses: actions/upload-artifact@v4
+        with:
+          name: vortexos-iso
+          path: |
+            VorteXOS-*.iso
+            VorteXOS-*.iso.sha256
+          retention-days: 7
+
+  # ─────────────────────────────────────────────
+  # Job 3: GitHub Release oluştur ve ISO yayınla
+  # ─────────────────────────────────────────────
+  create-release:
+    name: 🚀 Publish Release
+    needs: remaster-iso
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: ISO artifact'larını indir
+        uses: actions/download-artifact@v4
+        with:
+          name: vortexos-iso
+          path: release-assets
+
+      - name: Release oluştur ve yayınla
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name || 'v1.0.0-dev' }}
+          name: "VorteXOS ${{ github.ref_name || 'v1.0.0' }} — Teknofest 2026"
+          body: |
+            ## 🌟 VorteXOS ${{ github.ref_name }}
+
+            Türkiye'nin ilk duygu ve hava durumu uyumlu Android tabanlı işletim sistemi.
+
+            ### ✨ Bu sürümdeki benzersiz özellikler
+            - 🧠 **VorteX Emotion Engine** — Kamera ile duygu algılama, tüm OS adaptasyonu
+            - 🌦️ **VorteX WeatherSync** — Gerçek zamanlı hava teması (yağmur, kar, güneş efektleri)
+            - 🤖 **VorteX AI Assistant** — Gemini API destekli, Türkçe, duygu-uyumlu asistan
+            - 🔒 **VorteX Guard** — PIN kilidi, gizlilik modu, izin denetçisi
+
+            ### 💻 Kurulum (VirtualBox)
+            1. ISO'yu indirin
+            2. VirtualBox > Yeni VM > Linux 64-bit
+            3. RAM: 4GB, CPU: 2 çekirdek, Chipset: ICH9
+            4. Video: 128MB, VBoxSVGA, Mouse: PS/2
+            5. ISO'yu optik sürücüye ekleyin
+            6. Başlatın!
+
+            ### 🔑 Doğrulama
+            SHA256 dosyasıyla ISO bütünlüğünü doğrulayın.
+          files: |
+            release-assets/VorteXOS-*.iso
+            release-assets/VorteXOS-*.iso.sha256
+          draft: false
+          prerelease: ${{ github.event.inputs.release_type != 'stable' }}
+          generate_release_notes: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

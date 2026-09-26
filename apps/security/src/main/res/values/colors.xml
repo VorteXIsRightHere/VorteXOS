@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vortex_black">#121212</color>
+    <color name="vortex_card">#1E1E1E</color>
+    <color name="vortex_text_primary">#FFFFFF</color>
+    <color name="vortex_text_secondary">#B3FFFFFF</color>
+    <color name="vortex_accent">#7C4DFF</color>
+    <color name="vortex_error">#CF6679</color>
+    <color name="vortex_success">#03DAC6</color>
+</resources>

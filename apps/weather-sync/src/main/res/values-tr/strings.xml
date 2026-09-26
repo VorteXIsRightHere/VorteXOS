@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">HavaSenkronize</string>
+    <string name="title_activity_settings">HavaSenkronize Ayarları</string>
+    <string name="wallpaper_description">Mevcut hava durumunu yansıtan canlı duvar kağıdı.</string>
+    <string name="pref_enable_weathersync">HavaSenkronize Etkinleştir</string>
+    <string name="pref_manual_weather">Manuel Hava Durumu (Demo)</string>
+    <string name="pref_particle_density">Parçacık Yoğunluğu</string>
+    
+    <string-array name="weather_types">
+        <item>Otomatik (GPS)</item>
+        <item>Güneşli</item>
+        <item>Yağmurlu</item>
+        <item>Karlı</item>
+        <item>Fırtınalı</item>
+        <item>Bulutlu</item>
+        <item>Sisli</item>
+        <item>Gün Batımı</item>
+        <item>Gece</item>
+    </string-array>
+    
+    <string-array name="weather_type_values">
+        <item>AUTO</item>
+        <item>SUNNY</item>
+        <item>RAINY</item>
+        <item>SNOWY</item>
+        <item>STORMY</item>
+        <item>CLOUDY</item>
+        <item>FOGGY</item>
+        <item>SUNSET</item>
+        <item>NIGHT</item>
+    </string-array>
+</resources>

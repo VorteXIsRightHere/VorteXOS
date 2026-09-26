@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/windowBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="8dp"
+        android:gravity="center_vertical">
+        
+        <TextView
+            android:id="@+id/tvBreadcrumb"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="/storage/emulated/0"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="start" />
+
+        <ImageButton
+            android:id="@+id/btnToggleView"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_sort_by_size"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Toggle View" />
+
+        <ImageButton
+            android:id="@+id/btnNewFolder"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@android:drawable/ic_menu_add"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/new_folder" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:padding="4dp" />
+
+</LinearLayout>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VorteXOS</string>
+
+    <!-- Ortak metinler -->
+    <string name="ok">Tamam</string>
+    <string name="cancel">İptal</string>
+    <string name="save">Kaydet</string>
+    <string name="delete">Sil</string>
+    <string name="search">Ara</string>
+    <string name="settings">Ayarlar</string>
+    <string name="about">Hakkında</string>
+    <string name="close">Kapat</string>
+    <string name="back">Geri</string>
+    <string name="share">Paylaş</string>
+    <string name="copy">Kopyala</string>
+    <string name="paste">Yapıştır</string>
+    <string name="cut">Kes</string>
+    <string name="select_all">Tümünü Seç</string>
+    <string name="error_occurred">Bir hata oluştu</string>
+    <string name="loading">Yükleniyor…</string>
+    <string name="no_internet">İnternet bağlantısı yok</string>
+    <string name="permission_required">İzin gerekli</string>
+
+    <!-- Hava durumu tipleri -->
+    <string name="weather_sunny">Güneşli</string>
+    <string name="weather_rainy">Yağmurlu</string>
+    <string name="weather_snowy">Karlı</string>
+    <string name="weather_stormy">Fırtınalı</string>
+    <string name="weather_cloudy">Bulutlu</string>
+    <string name="weather_foggy">Sisli</string>
+    <string name="weather_sunset">Gün Batımı</string>
+    <string name="weather_night">Gece</string>
+
+    <!-- Duygu tipleri -->
+    <string name="emotion_happy">Mutlu</string>
+    <string name="emotion_sad">Üzgün</string>
+    <string name="emotion_angry">Kızgın</string>
+    <string name="emotion_surprised">Şaşkın</string>
+    <string name="emotion_neutral">Nötr</string>
+    <string name="emotion_tired">Yorgun</string>
+    <string name="emotion_relaxed">Rahat</string>
+</resources>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Emotion Engine</string>
+    <string name="enable_emotion_engine">Enable Emotion Engine</string>
+    <string name="current_emotion_placeholder">Emotion: Neutral 😐</string>
+    <string name="history_label">Emotion History</string>
+    <string name="no_history">No history available yet.</string>
+    <string name="privacy_title">Privacy Consent</string>
+    <string name="privacy_description">VorteX Emotion Engine uses your front camera to detect emotions and adapt the system UI. All processing happens entirely on your device. No images are saved or transmitted. Only the final emotion label is logged in your local history.</string>
+    <string name="agree">I Agree</string>
+    <string name="decline">Decline</string>
+    <string name="consent_declined">Consent required to use the Emotion Engine.</string>
+    <string name="camera_permission_denied">Camera permission is required.</string>
+</resources>

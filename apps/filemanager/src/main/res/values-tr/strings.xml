@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Dosya Yöneticisi</string>
+    <string name="new_folder">Yeni Klasör</string>
+    <string name="rename">Yeniden Adlandır</string>
+    <string name="delete">Sil</string>
+    <string name="copy">Kopyala</string>
+</resources>

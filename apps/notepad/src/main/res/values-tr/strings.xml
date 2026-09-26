@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Not Defteri</string>
+    <string name="search_notes">Notlarda ara</string>
+    <string name="new_note">Yeni Not</string>
+    <string name="title">Başlık</string>
+    <string name="content">Not içeriği</string>
+    <string name="save">Kaydet</string>
+    <string name="share">Paylaş</string>
+    <string name="delete">Sil</string>
+    <string name="category">Kategori</string>
+</resources>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VorteX Güvenlik</string>
+    <string name="security_score">Güvenlik Puanı</string>
+    <string name="app_lock">Uygulama Kilidi</string>
+    <string name="privacy_mode">Gizlilik Modu</string>
+    <string name="permission_inspector">İzin Denetçisi</string>
+    <string name="pin_setup">PIN Kurulumu</string>
+    <string name="enter_pin">PIN Girin</string>
+    <string name="confirm_pin">PIN Onayla</string>
+    <string name="pin_mismatch">PIN\'ler eşleşmiyor. Tekrar deneyin.</string>
+    <string name="pin_saved">PIN başarıyla kaydedildi.</string>
+    <string name="verify_pin">PIN Doğrula</string>
+    <string name="wrong_pin">Yanlış PIN. Tekrar deneyin.</string>
+    <string name="lockout_message">Çok fazla deneme. 30 saniye kilitlendi.</string>
+    <string name="clear">Temizle</string>
+    <string name="confirm">Onayla</string>
+    <string name="high_risk">Yüksek Risk</string>
+    <string name="medium_risk">Orta Risk</string>
+</resources>

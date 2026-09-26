@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="vortex_purple">#7C4DFF</color>
+    <color name="vortex_purple_dark">#512DA8</color>
+    <color name="vortex_bg_dark">#121212</color>
+    <color name="vortex_surface_dark">#1E1E1E</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="dock_bg">#80000000</color>
+</resources>

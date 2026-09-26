@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.VorteXOSLauncher" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/vortex_purple</item>
+        <item name="colorPrimaryDark">@color/vortex_purple_dark</item>
+        <item name="colorAccent">@color/vortex_purple</item>
+        <item name="android:windowBackground">@color/vortex_bg_dark</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+</resources>

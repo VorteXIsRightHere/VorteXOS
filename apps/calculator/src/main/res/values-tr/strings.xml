@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hesap Makinesi</string>
+    <string name="history">Geçmiş</string>
+    <string name="clear">Temizle</string>
+    <string name="delete">Sil</string>
+    <string name="equals">Eşittir</string>
+    <string name="error">Hata</string>
+</resources>

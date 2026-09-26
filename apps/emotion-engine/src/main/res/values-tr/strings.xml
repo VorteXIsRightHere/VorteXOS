@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Duygu Motoru</string>
+    <string name="enable_emotion_engine">Duygu Motorunu Etkinleştir</string>
+    <string name="current_emotion_placeholder">Duygu: Nötr 😐</string>
+    <string name="history_label">Duygu Geçmişi</string>
+    <string name="no_history">Henüz geçmiş yok.</string>
+    <string name="privacy_title">Gizlilik Onayı</string>
+    <string name="privacy_description">VorteX Duygu Motoru, duyguları algılamak ve sistem arayüzünü uyarlamak için ön kameranızı kullanır. Tüm işlemler cihazınızda gerçekleşir. Hiçbir görüntü kaydedilmez veya iletilmez. Sadece son duygu etiketi yerel geçmişinize kaydedilir.</string>
+    <string name="agree">Kabul Ediyorum</string>
+    <string name="decline">Reddet</string>
+    <string name="consent_declined">Duygu Motorunu kullanmak için onay gereklidir.</string>
+    <string name="camera_permission_denied">Kamera izni gereklidir.</string>
+</resources>

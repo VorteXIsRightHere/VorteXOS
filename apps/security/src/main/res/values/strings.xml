@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">VorteX Guard</string>
+    <string name="security_score">Security Score</string>
+    <string name="app_lock">App Lock</string>
+    <string name="privacy_mode">Privacy Mode</string>
+    <string name="permission_inspector">Permission Inspector</string>
+    <string name="pin_setup">PIN Setup</string>
+    <string name="enter_pin">Enter PIN</string>
+    <string name="confirm_pin">Confirm PIN</string>
+    <string name="pin_mismatch">PINs do not match. Try again.</string>
+    <string name="pin_saved">PIN saved successfully.</string>
+    <string name="verify_pin">Verify PIN</string>
+    <string name="wrong_pin">Wrong PIN. Try again.</string>
+    <string name="lockout_message">Too many attempts. Locked for 30 seconds.</string>
+    <string name="clear">Clear</string>
+    <string name="confirm">Confirm</string>
+    <string name="high_risk">High Risk</string>
+    <string name="medium_risk">Medium Risk</string>
+</resources>
