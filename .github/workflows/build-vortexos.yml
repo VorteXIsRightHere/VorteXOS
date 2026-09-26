@@ -39,8 +39,9 @@ jobs:
           distribution: 'temurin'
           cache: gradle
 
-      - name: Android SDK kur
-        uses: android-actions/setup-android@v3
+      - name: Android SDK Lisanslarını Onayla
+        run: |
+          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses 2>/dev/null || true
 
       - name: Gradle çalıştırma izni ver
         run: chmod +x ./gradlew
